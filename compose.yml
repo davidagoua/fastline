@@ -1,0 +1,54 @@
+services:
+  app1:
+    build: 
+      context: ./app1 
+    image: "localhost:8082/app1:latest"
+    ports:
+        - "8000:8000"
+    environment:
+        - DB_HOST=${DB_HOST}
+        - DB_PORT=${DB_PORT}
+        - DB_NAME=${DB_NAME}
+        - DB_USER=${DB_USER}
+        - DB_PASSWORD=${DB_PASSWORD}
+    deploy:
+      replicas: 3
+
+  app2:
+    build: 
+      context: ./app2 
+    image: "localhost:8082/app2:latest"
+    ports:
+        - "8001:8000"
+    environment:
+        - DB_HOST=${DB_HOST}
+        - DB_PORT=${DB_PORT}
+        - DB_NAME=${DB_NAME}
+        - DB_USER=${DB_USER}
+        - DB_PASSWORD=${DB_PASSWORD}
+    deploy:
+      replicas: 3
+
+  db:
+    image: postgres:15-alpine
+    container_name: db
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+
+  redis:
+    image: bitnami/redis:latest
+    container_name: redis
+    ports:
+      - "${REDIS_PORT}:6379"
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+
+
+          
+        
