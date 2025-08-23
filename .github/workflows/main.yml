@@ -18,7 +18,7 @@ jobs:
         run: bandit -i ./app1 -f json -o ./app1/bandit-reports.json
       - name: scann app2
         run: bandit -i ./app1 -f json -o ./app2/bandit-reports.json
-      - name: uplozd artifacts:
+      - name: upload artifacts
         uses: actions/upload-artifact@v4.6.2
         with:
           name: upload bandit reports
