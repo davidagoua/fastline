@@ -1,0 +1,21 @@
+name: main-ci-actions
+
+on: [push]
+jobs:
+  sast_scan:
+    name: scan with bandit
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v5.0.0
+      - name: install python
+        uses: actions/setup-python@v5.6.0
+        with:
+          python-version: 3.12
+      - name: install bandit
+        run: pip3 install bandit
+      - name: scan app1
+        run: bandit -i ./app1
+      - name: scann app2
+        run: bandit -i ./app1
+    
