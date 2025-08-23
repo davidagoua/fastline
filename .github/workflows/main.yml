@@ -17,7 +17,7 @@ jobs:
       - name: scan app1
         run: bandit -i ./app1 -f json -o ./app1/bandit-reports.json
       - name: scann app2
-        run: bandit -i ./app1 -f json -o ./app2/bandit-reports.json
+        run: bandit -i ./app2 -f json -o ./app2/bandit-reports.json
       - name: debug - check report files
         run: |
           echo "App1 report:"
