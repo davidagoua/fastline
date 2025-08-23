@@ -15,7 +15,16 @@ jobs:
       - name: install bandit
         run: pip3 install bandit
       - name: scan app1
-        run: bandit -i ./app1
+        run: bandit -i ./app1 -f json -o ./app1/bandit-reports.json
       - name: scann app2
-        run: bandit -i ./app1
+        run: bandit -i ./app1 -f json -o ./app2/bandit-reports.json
+      - name: download  artefacts
+        use: portswigger-cloud/defectdojo-import-scan@v1.0.1
+        with:
+          defectdojo-url: "http://31.187.72.141:8080"
+          defectdojo-username: admin
+          defectdojo-password: kvXax70pLk3pkphaRoQKe4
+          scan-results-file-name: ./app1/bandit-reports.json
+          
+          
     
