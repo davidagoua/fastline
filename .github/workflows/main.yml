@@ -25,6 +25,7 @@ jobs:
           defectdojo-username: admin
           defectdojo-password: kvXax70pLk3pkphaRoQKe4
           scan-results-file-name: ./app1/bandit-reports.json
+          defectdojo-product: fastline
           
           
     
