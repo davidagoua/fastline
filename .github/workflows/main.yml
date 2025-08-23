@@ -39,8 +39,7 @@ jobs:
           defectdojo-product: fastline
           defectdojo-scan-type: "Bandit Scan"
           defectdojo-engagement-name: "CI/CD Pipeline"
-          defectdojo-auto-create-context: true
-          defectdojo-close-old-findings: true
+
           
           
     
