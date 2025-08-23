@@ -21,9 +21,9 @@ jobs:
       - name: debug - check report files
         run: |
           echo "App1 report:"
-          ls -la ./app1-bandit-report.json
+          ls -la ./app1/bandit-report.json
           echo "App2 report:"
-          ls -la ./app2-bandit-report.json
+          ls -la ./app2/bandit-report.json
       - name: upload artifacts
         uses: actions/upload-artifact@v4.6.2
         with:
